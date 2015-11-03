@@ -10,29 +10,31 @@ ring1H = 5;
 ring2StartD=15;
 ring2W=1;
 ring2H = 3;
-radialThick = 1.5;
+radialThick = 2.5;
+radialThickH = 2;
 numRadialThick = 3;
 radialThickOffset = 30;
-radialThin = 0.5;
+radialThin = 1.5;
+radialThinH = 2;
 numRadialThin = 3;
 radialThinOffset = 90;
 
-littleSQBackStartD = 30;
-littleSQBackW = 8;
+littleSQBackStartD = 28;
+littleSQBackW = 10;
 littleSQBackH = 5.0;
-littleSQdX = 2.5;
-littleSQdY = 1;
-numLittleSQ = 50;
+littleSQdX = 3;
+littleSQdY = 2;
+numLittleSQ = 40;
 
-outerRing1D = 20;
+outerRing1D = 19;
 outerRing1W = 0.5;
 outerRing1H = 2.0;
-outerRing2D = 23;
+outerRing2D = 21;
 outerRing2W = 0.5;
-outerRing2H = 2.5;
-outerRing3D = 26;
+outerRing2H = 3;
+outerRing3D = 23;
 outerRing3W = 0.5;
-outerRing3H = 3.0;
+outerRing3H = 4;
 
 radialDY = 0.5;
 numRadials = 20;
@@ -68,15 +70,17 @@ module toroid(smallD,bigD,h) {
   }
 }
 module bigBar(angle) {
-  length = ring2StartD/2+ring2W;
+  //length = ring2StartD/2+ring2W;
+  length = littleSQBackStartD/2;
   rotate(a=angle) {
-  translate([0,-radialThick/2,0]) { cube([length,radialThick,high]); }
+  translate([0,-radialThick/2,0]) { cube([length,radialThick,radialThickH]); }
   }
 }
 module smallBar(angle) {
-    length = ring2StartD/2+ring2W;
+    //length = ring2StartD/2+ring2W;
+    length = littleSQBackStartD/2;
     rotate(a=angle) {
-        translate([0,-radialThin/2,0]) { cube([length,radialThin,high]); }
+        translate([0,-radialThin/2,0]) { cube([length,radialThin,radialThinH]); }
     }
 }
 
@@ -131,4 +135,4 @@ lens();
 centerRings();
 littleSquares();
 outerRings();
-littleRadials();
+//littleRadials();
